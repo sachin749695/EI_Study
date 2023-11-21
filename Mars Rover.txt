@@ -1,15 +1,17 @@
+#include <bits/stdc++.h>
 #include <iostream>
 #include <vector>
+using namespace std;
 
 class Rover {
 private:
     int x;
     int y;
     char direction;
-    std::vector<std::pair<int, int>> obstacles;
+    vector<pair<int, int>> obstacles;
 
 public:
-    Rover(int x, int y, char direction, std::vector<std::pair<int, int>> obstacles) : x(x), y(y), direction(direction), obstacles(obstacles) {}
+    Rover(int x, int y, char direction, vector<pair<int, int>> obstacles) : x(x), y(y), direction(direction), obstacles(obstacles) {}
 
     void moveForward() {
         if (!isObstacleAhead()) {
@@ -65,7 +67,7 @@ public:
     }
 
     bool isObstacleAhead() const {
-        for (const std::pair<int, int>& obstacle : obstacles) {
+        for (const pair<int, int>& obstacle : obstacles) {
             if (obstacle.first == x && obstacle.second == y + 1 && direction == 'N') {
                 return true;
             } else if (obstacle.first == x + 1 && obstacle.second == y && direction == 'E') {
@@ -94,44 +96,44 @@ public:
     }
 
     void printStatus() {
-        std::cout << "Final Position: (" << x << ", " << y << ", " << direction << ")" << std::endl;
-        std::cout << "Status Report: \"Rover is at (" << x << ", " << y << ") facing " << direction << ". No Obstacles detected.\"" << std::endl;
+        cout << "Final Position: (" << x << ", " << y << ", " << direction << ")" << endl;
+        cout << "Status Report: \"Rover is at (" << x << ", " << y << ") facing " << direction << ". No Obstacles detected.\"" << endl;
     }
 };
 
 int main() {
     // Get grid size from user
     int gridSizeX, gridSizeY;
-    std::cout << "Enter grid size (X Y): ";
-    std::cin >> gridSizeX >> gridSizeY;
+    cout << "Enter grid size (X Y): ";
+    cin >> gridSizeX >> gridSizeY;
 
     // Get starting position from user
     int startX, startY;
-    std::cout << "Enter starting position (X Y): ";
-    std::cin >> startX >> startY;
+    cout << "Enter starting position (X Y): ";
+    cin >> startX >> startY;
 
     // Get starting direction from user
     char startDirection;
-    std::cout << "Enter starting direction (N S E W): ";
-    std::cin >> startDirection;
+    cout << "Enter starting direction (N S E W): ";
+    cin >> startDirection;
 
     // Get commands from user
-    std::string commands;
-    std::cout << "Enter commands: ";
-    std::cin >> commands;
+    string commands;
+    cout << "Enter commands: ";
+    cin >> commands;
 
     // Get the number of obstacles from user
     int numObstacles;
-    std::cout << "Enter the number of obstacles: ";
-    std::cin >> numObstacles;
+    cout << "Enter the number of obstacles: ";
+    cin >> numObstacles;
 
     // Get obstacles from user
-    std::vector<std::pair<int, int>> obstacles;
-    std::cout << "Enter obstacles (X Y) for each obstacle:" << std::endl;
+    vector<pair<int, int>> obstacles;
+    cout << "Enter obstacles (X Y) for each obstacle:" << std::endl;
     for (int i = 0; i < numObstacles; ++i) {
         int obstacleX, obstacleY;
-        std::cout << "Obstacle " << i + 1 << ": ";
-        std::cin >> obstacleX >> obstacleY;
+        cout << "Obstacle " << i + 1 << ": ";
+        cin >> obstacleX >> obstacleY;
         obstacles.emplace_back(obstacleX, obstacleY);
     }
 
